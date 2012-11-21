@@ -19,7 +19,7 @@ class Kris::Kross::Handler
     {
       "Access-Control-Allow-Origin" => Kris::Kross::Configuration.hosts,
       "Access-Control-Allow-Methods" => "POST, GET, OPTIONS",
-      "Access-Control-Allow-Headers" => "X-Requested-With, X-Prototype-Version, Authorization, Authentication",
+      "Access-Control-Allow-Headers" => Kris::Kross::Configuration.headers,
       "Access-Control-Max-Age" => "172800",
       "Access-Control-Allow-Credentials" => 'true'
     }

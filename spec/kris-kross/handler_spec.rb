@@ -11,11 +11,13 @@ describe Kris::Kross::Handler do
 
   let(:request_method) { 'OPTIONS' }
   let(:allow_origin) { 'http://my-host https://my-host' }
+  let(:allow_headers) { 'X-Stuff X-Other-Stuff X-What-What' }
 
   let(:configuration) { mock() }
 
   before do
     Kris::Kross::Configuration.stub(:hosts).and_return(allow_origin)
+    Kris::Kross::Configuration.stub(:headers).and_return(allow_headers)
   end
 
   let(:env) { {
@@ -31,7 +33,7 @@ describe Kris::Kross::Handler do
     it "should include Access-Control headers" do
       headers['Access-Control-Allow-Origin'].should == allow_origin
       headers["Access-Control-Allow-Methods"].should == "POST, GET, OPTIONS"
-      headers["Access-Control-Allow-Headers"].should == "X-Requested-With, X-Prototype-Version, Authorization, Authentication"
+      headers["Access-Control-Allow-Headers"].should == allow_headers
       headers["Access-Control-Max-Age"].should == "172800"
       headers["Access-Control-Allow-Credentials"].should == 'true'
     end
@@ -43,7 +45,7 @@ describe Kris::Kross::Handler do
     let(:application_response) {
       [
           200,
-          {"header"=>'content'},
+          {"header" => 'content'},
           application_response_body
       ]
     }

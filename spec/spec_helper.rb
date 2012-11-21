@@ -8,9 +8,9 @@
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../../Gemfile', __FILE__)
 require 'rubygems'
 require 'bundler/setup' if File.exists?(ENV['BUNDLE_GEMFILE'])
-require 'kris-kross'
-
 require 'support/singleton'
+require 'kris-kross'
+require 'support/configuration'
 
 RSpec.configure do |config|
   config.treat_symbols_as_metadata_keys_with_true_values = true
