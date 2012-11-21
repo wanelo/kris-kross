@@ -105,7 +105,7 @@ of the picture, though. When the browser tries to do a cross origin request it f
 It does this with what is called a preflight check.
 
 Preflight checks hit the cross origin domain with an HTTP call using the OPTIONS verb. Wait, never heard of OPTIONS?
-Test it out with another bit of curl (assuming a direct pass through of OPTIONS to the main domain).
+Test it out with another bit of curl:
 
 ```bash
 > curl -X OPTIONS http://saves.make-my-video.com -I
