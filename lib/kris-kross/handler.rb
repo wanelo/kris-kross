@@ -1,7 +1,9 @@
+require 'singleton'
+
 class Kris::Kross::Handler
-  def initialize(app)
-    @app = app
-  end
+  include Singleton
+
+  attr_accessor :app
 
   def call(env)
     @env = env
@@ -30,7 +32,7 @@ class Kris::Kross::Handler
   end
 
   def respond(env)
-    status, headers, response = @app.call(env)
+    status, headers, response = app.call(env)
     [status, headers.merge(cors_headers), response]
   end
 

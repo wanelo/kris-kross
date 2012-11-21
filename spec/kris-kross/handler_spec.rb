@@ -1,7 +1,12 @@
 require 'spec_helper'
 
 describe Kris::Kross::Handler do
-  subject { Kris::Kross::Handler.new(app) }
+  before do
+    Kris::Kross::Handler.reset_instance
+    Kris::Kross::Handler.instance.app = app
+  end
+
+  subject { Kris::Kross::Handler.instance }
 
   let(:app) { mock() }
   let(:response) { subject.call(env) }

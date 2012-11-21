@@ -12,11 +12,11 @@ module Kris
     end
 
     def initialize(app)
-      @app = app
+      Kris::Kross::Handler.instance.app = app
     end
 
     def call(env)
-      Kris::Kross::Handler.new(@app).call(env)
+      Kris::Kross::Handler.instance.call(env)
     end
   end
 end
